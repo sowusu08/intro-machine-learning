@@ -228,10 +228,40 @@ def nn_gradientCheck():
     nn_params : array_like
         "Unrolled" vector containing weights
         for all layers. Matrix of shape (, )
+        
+    nn_CostFunction : function
+    
+    input_layer_size : 
+    
+    hidden_layer_size :
+    
+    num_labels : 
+    
+    X :
+    
+    y :
+    
+    lambda_ : float
     
     Returns
     ----------
     """
-    for 
+    gradients = []
+    for i in range(nn_params):
+        Theta_plus = nn_params[i] + epsilon        # <- returns entire nn_params just with a different number in position i
+        Theta_minus = nn_params[i] - epsilon
+        
+        # calculate costs
+        J_plus, _ = nnCostFunction(Theta_plus, input_layer_size, 
+                                    hidden_layer_size, num_labels,
+                                    X, y, lambda_)
+        J_mins, _ = nnCostFunction(Theta_minus, input_layer_size, 
+                                    hidden_layer_size, num_labels,
+                                    X, y, lambda_)
+        
+        #approximate gradient
+        approx_grad = (J_plus - J_minus)/(2*epsilon)
+        
+        
     
 ```
