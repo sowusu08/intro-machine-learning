@@ -207,4 +207,31 @@ res = optimize.minimize(nnCostFunction, init_nn_params,
                         options=options)
 cost = res.fun
 unrolledTheta = res.x
+
+#===========reshaping ThetaN example=============
+# if ThetaN is of shape (s_N+1, s_N +1)
+ThetaN = np.reshape(unrolledTheta[:(s_N+1 * s_N +1] + 1), (s_N+1, s_N +1))
+#================================================
+```
+<br>
+
+
+# Gradient Checking
+```
+def nn_gradientCheck():
+    """
+    Check optimized parameters by comparing
+    them to an estimate of gradient.
+    
+    Parameters
+    ----------
+    nn_params : array_like
+        "Unrolled" vector containing weights
+        for all layers. Matrix of shape (, )
+    
+    Returns
+    ----------
+    """
+    for 
+    
 ```
