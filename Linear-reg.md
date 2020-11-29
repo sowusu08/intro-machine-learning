@@ -209,7 +209,7 @@ pyplot.show()
 <br>
 
 # Make predictions using h(x)
-Recall ![](http://chart.apis.google.com/chart?cht=tx&chl=h_\theta(x)=\theta_0x_0+\theta_1x_1+...+\theta_nx_n) 
+Recall ![](http://mathurl.com/render.cgi?h_%5Ctheta%28x%29%3D%5Ctheta_0x_0+%5Ctheta_1x_1+...+%5Ctheta_nx_n%5Cnocache) 
  
 * ## without normalization 
 ```
