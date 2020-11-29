@@ -245,6 +245,7 @@ def nn_gradientCheck():
     
     Returns
     ----------
+        Printed output.
     """
     gradients = []
     for i in range(nn_params):
@@ -261,6 +262,13 @@ def nn_gradientCheck():
         
         #approximate gradient
         approx_grad = (J_plus - J_minus)/(2*epsilon)
+        
+        np.append(gradients, approx_grad)
+    
+    print("Optimized parameters", , "Gradient Checking")
+    for i in range(nn_params):
+        print(unrolledTheta[i], , gradients[i])     # <- where unrolledTheta is scipy.optimize.minimize() result.x
+       
         
         
     
