@@ -218,7 +218,8 @@ ThetaN = np.reshape(unrolledTheta[:(s_N+1 * s_N +1] + 1), (s_N+1, s_N +1))
 
 # Gradient Checking
 ```
-def nn_gradientCheck():
+def nn_computeNumericalGradient(nn_params, input_layer_size, hidden_layer_size, 
+                                num_labels, X, y, epsilon=1e-4, lambda_=0.0):
     """
     Check optimized parameters by comparing
     them to an estimate of gradient.
@@ -226,8 +227,8 @@ def nn_gradientCheck():
     Parameters
     ----------
     nn_params : array_like
-        "Unrolled" vector containing weights
-        for all layers. Matrix of shape (, )
+        "Unrolled" vector containing optimized
+        parameters for all layers.
         
     nn_CostFunction : function
     
@@ -241,35 +242,41 @@ def nn_gradientCheck():
     
     y :
     
-    lambda_ : float
+    epsilon : float, optional
+    
+    lambda_ : float, optional
     
     Returns
     ----------
         Printed output.
     """
-    gradients = []
-    for i in range(nn_params):
-        Theta_plus = nn_params[i] + epsilon        # <- returns entire nn_params just with a different number in position i
-        Theta_minus = nn_params[i] - epsilon
+    gradients = np.zeros((nn_params.size, 2))
+
+    for i in range(nn_params.size):
+        Theta_plus = nn_params.copy()
+        Theta_plus[i] = Theta_plus[i] + epsilon        # <- returns entire nn_params just with a different number in position i
+
+        Theta_minus = nn_params.copy()
+        Theta_minus[i] = Theta_minus[i] - epsilon
         
         # calculate costs
         J_plus, _ = nnCostFunction(Theta_plus, input_layer_size, 
-                                    hidden_layer_size, num_labels,
+                                    hidden_layer_size, num_labels, 
                                     X, y, lambda_)
-        J_mins, _ = nnCostFunction(Theta_minus, input_layer_size, 
+        J_minus, _ = nnCostFunction(Theta_minus, input_layer_size, 
                                     hidden_layer_size, num_labels,
                                     X, y, lambda_)
         
-        #approximate gradient
+        #compute numerical gradient
         approx_grad = (J_plus - J_minus)/(2*epsilon)
         
-        np.append(gradients, approx_grad)
+        gradients[i,0] = approx_grad
     
-    print("Optimized parameters", , "Gradient Checking")
-    for i in range(nn_params):
-        print(unrolledTheta[i], , gradients[i])     # <- where unrolledTheta is scipy.optimize.minimize() result.x
-       
-        
-        
+    gradients[:,1] = params
+           
+    
+    # Print optimized parameters and approximated parameters side-by-side
+    print("(Numerical Gradient, Analytical Gradient)")
+    print(gradients)
     
 ```
