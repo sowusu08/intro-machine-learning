@@ -271,7 +271,9 @@ def gradientCheck(params, costFunction, args=(), epsilon=1e-4):
         
         gradients[i,0] = approx_grad
     
-    gradients[:,1] = params
+    # Calculate analytical gradient (NOTE we are compaing partial deriv of cost NOT Theta)
+    _, grad = costFunction(params, *args)
+    gradients[:,1] = grad
            
     
     # Print optimized parameters and approximated parameters side-by-side
