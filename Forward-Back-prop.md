@@ -217,7 +217,7 @@ ThetaN = np.reshape(unrolledTheta[:(s_N+1 * s_N +1] + 1), (s_N+1, s_N +1))
 
 
 # Gradient Checking
-NOTE: This works with any costFunction()
+> This works with any costFunction()  
 ![](http://mathurl.com/render.cgi?%24%5Ctext%7Bif%20%7D%20%5Ctheta%3D%5B%5Ctheta_i%2C%20%5Ctheta_%7Bi+1%7D%2C%20...%2C%20%5Ctheta_n%5D%20%5Ctext%7B%20is%20unrolled%20vector%20of%20all%20neural%20network%20parameters%7D%24%0A%0A%0A%24%5Cqquad%20%5Ctext%7Bfor%20%7D%20i%3D%281%2C%202%2C%203%2C%20...%2C%20n%29%24%0A%0A%24%5Cqquad%20%5Cquad%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%5Ctheta_%7Bi%7D%7DJ%28%5Ctheta%29%20%5Capprox%20%5Cfrac%7BJ%28%28%5Ctheta_i+%5Cepsilon%29%2C%20...%2C%20%5Ctheta_n%29%20-%20J%28%28%5Ctheta_i-%5Cepsilon%29%2C%20...%2C%20%5Ctheta_n%29%7D%7B2%5Cepsilon%7D%24%0A%0A%0A%0A%0A%5Cnocache)
 ```
 def gradientCheck(params, costFunction, args=(), epsilon=1e-4):
@@ -285,3 +285,6 @@ def gradientCheck(params, costFunction, args=(), epsilon=1e-4):
 > network of much smaller size or  
 > (b) work an if else statement into computNumericalGradient() which prints user-inputted  
 > segment of the output if params.size() > 20
+<br>
+
+# Predict
