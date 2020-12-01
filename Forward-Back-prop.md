@@ -280,9 +280,8 @@ def gradientCheck(params, costFunction, args=(), epsilon=1e-4):
     print("(Numerical Gradient, Analytical Gradient)")
     print(gradients)
 ```
-NOTE: For complex neural networks running this function is EXTREMELY costly. So it would make more sense  
-to:  
-(a) write a function, checkGradients() that runs computNumericalGradient() on a simulated neural  
-network of much smaller size or  
-(b) work an if else statement into computNumericalGradient() which prints user-inputted  
-segment of the output if params.size() > 20
+> For complex neural networks running this function is EXTREMELY costly. So it would make more sense to:   
+> (a) write a function, checkGradients() that runs computNumericalGradient() on a simulated neural  
+> network of much smaller size or  
+> (b) work an if else statement into computNumericalGradient() which prints user-inputted  
+> segment of the output if params.size() > 20
