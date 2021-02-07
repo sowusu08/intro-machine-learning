@@ -4,7 +4,7 @@
 ![](http://chart.apis.google.com/chart?cht=tx&chl=$\delta^{(l=L)}=a^{(L)}-y^{(i)}$)  
 ![](http://mathurl.com/render.cgi?%0A%24D_%7Bij%7D%5E%7B%28l%29%7D%20%3D%20%5Cfrac%7B1%7D%7Bm%7D%20%28%5CDelta_%7Bij%7D%5E%7B%28l%29%7D%29%20%5Cquad%20%5Ctext%7Bif%20%7D%20j%5Cneq0%24%20%20%20%20%20%20%0A%0A%24%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5CTheta_%7Bij%7D%5E%7B%28l%29%7D%7D%20J%28%5CTheta%29%20%3D%20D_%7Bij%7D%5E%7B%28l%29%7D%24%0A%5Cnocache)  
 ![](http://mathurl.com/render.cgi?%24%24%20%5Ctext%7Bif%20g%28z%29%20is%20the%20sigmoid%20function%7D%20%5Cquad%20g%27%28z%29%5Cvert%20_%7Bz%3Da%5E%7B%28l%29%7D%7D%20%3D%20a%5E%7B%28l%29%7D%20.*%20%281%20-%20a%5E%7B%28l%29%7D%29%24%24%5Cnocache)  
-```
+```python
 def sigmoidGradient(a):
     """
     Computes gradient/derivative of sigmoid function
@@ -24,7 +24,7 @@ def sigmoidGradient(a):
 
     return g
 ```  
-```
+```python
 def nnCostFunction(nn_params,
                    input_layer_size,
                    hidden_layer_size,
@@ -151,7 +151,7 @@ def nnCostFunction(nn_params,
 ```  
 ## b) Random Initialization
 ![](http://mathurl.com/render.cgi?%24%5Cepsilon_%7Binit%7D%20%3D%20%5Cfrac%7B%5Csqrt%7B6%7D%7D%7B%5Csqrt%7Bs_%7Bin%7D%20+%20s_%7Bout%7D%7D%7D%24%20where%20%24s_%7Bin%7D%20%3D%20s_l%24%20and%20%24s_%7Bout%7D%20%3D%20s_%7Bl+1%7D%24%20are%20the%20number%20of%20units%20in%20the%20layers%20adjacent%20to%20%24%5CTheta%5E%7Bl%7D%24%20%20%0A%0AInitialize%20weights%20%24%5Cin%20%5B-%5Cepsilon%2C%20%5Cepsilon%5D%24%20%20%5Cnocache)  
-```
+```python
 import math
 
 def randInitializeWeights(s_in, s_out):
@@ -193,7 +193,7 @@ ThetaN = randInitializeWeights(...)
 init_nn_params = np.concatenate((Theta1.ravel(), Theta2.ravel(), ..., ThetaN.ravel()), axis=0)   # => "unravelled" vector of initialized params
 ```
 ## c) Advanced Optimization
-```
+```python
 from scipy import optimize
 
 init_nn_params = np.concatenate((Theta1.ravel(), Theta2.ravel(), ..., ThetaN.ravel()), axis=0)
@@ -218,7 +218,7 @@ ThetaN = np.reshape(unrolledTheta[:(s_N+1 * s_N +1] + 1), (s_N+1, s_N +1))
 
 # Gradient Checking
 ![](http://mathurl.com/render.cgi?%24%5Ctext%7Bif%20%7D%20%5Ctheta%3D%5B%5Ctheta_i%2C%20%5Ctheta_%7Bi+1%7D%2C%20...%2C%20%5Ctheta_n%5D%20%5Ctext%7B%20is%20unrolled%20vector%20of%20all%20neural%20network%20parameters%7D%24%0A%0A%0A%24%5Cqquad%20%5Ctext%7Bfor%20%7D%20i%3D%281%2C%202%2C%203%2C%20...%2C%20n%29%24%0A%0A%24%5Cqquad%20%5Cquad%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%5Ctheta_%7Bi%7D%7DJ%28%5Ctheta%29%20%5Capprox%20%5Cfrac%7BJ%28%28%5Ctheta_i+%5Cepsilon%29%2C%20...%2C%20%5Ctheta_n%29%20-%20J%28%28%5Ctheta_i-%5Cepsilon%29%2C%20...%2C%20%5Ctheta_n%29%7D%7B2%5Cepsilon%7D%24%0A%0A%0A%0A%0A%5Cnocache)    
-```
+```python
 def gradientCheck(params, costFunction, args=(), epsilon=1e-4):
     """
     Check optimized parameters by comparing
