@@ -1,5 +1,5 @@
 # Plot 2D-feature data to be classified
-```
+```python
 import matplotlib.pyplot as plt
 %matplotlib inline
 
@@ -22,7 +22,7 @@ plt.legend(['Positive Class', 'Negative Class'])
 ![](http://mathurl.com/render.cgi?%5Cfrac%7B%5CpartialJ%28%5Ctheta%29%7D%7B%5Cpartial%5Ctheta_j%7D%3D%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5Em%5Cleft%28h_%5Ctheta%5Cleft%28x%5E%7B%28i%29%7D%5Cright%29-y%5E%7B%28i%29%7D%5Cright%29x_j%5E%7B%28i%29%7D%5Cqquad%5Ctext%7Bfor%7D%20j%20%3D%200%2C%201%2C%20%5Ccdots%20%2C%20n%20%5Cnocache)   
 
 ## a) Prep
-```
+```python
 # Define sigmoid function
 def sigmoid(z):
     """
@@ -48,7 +48,7 @@ def sigmoid(z):
 
     return g
 ```   
-```
+```python
 # Write a fucntion to return cost and gradient (the two inputs of particular advanced optiminzation method)
 def costFunction(theta, X, y):
     """
@@ -92,7 +92,7 @@ def costFunction(theta, X, y):
     return J, grad
 ```   
 ## b) Optimization
-```
+```python
 # Use scipy.optimize module to perform optimization
 from scipy import optimize
 
@@ -116,7 +116,7 @@ theta = res.x     # <- optimized theta
 ![](http://mathurl.com/render.cgi?h_%5Ctheta%28x%29%3Dg%28%5Ctheta%5ETx%29%5Cquad%5Ctext%7Bwhere%7D%5Cquad%20g%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1+e%5E%7B-z%7D%7D%5Cnocache)   
 ![](http://mathurl.com/render.cgi?%24%24%20J%28%5Ctheta%29%20%3D%20%5Cfrac%7B1%7D%7Bm%7D%20%5Csum_%7Bi%3D1%7D%5Em%20%5Cleft%5B%20-y%5E%7B%28i%29%7D%5Clog%20%5Cleft%28%20h_%5Ctheta%20%5Cleft%28x%5E%7B%28i%29%7D%20%5Cright%29%20%5Cright%29%20-%20%5Cleft%28%201%20-%20y%5E%7B%28i%29%7D%20%5Cright%29%20%5Clog%20%5Cleft%28%201%20-%20h_%5Ctheta%20%5Cleft%28%20x%5E%7B%28i%29%7D%20%5Cright%29%20%5Cright%29%20%5Cright%5D%20+%20%5Cfrac%7B%5Clambda%7D%7B2m%7D%20%5Csum_%7Bj%3D1%7D%5En%20%5Ctheta_j%5E2%20%24%24%0A%0A%24%24%20%5Cfrac%7B%5Cpartial%20J%28%5Ctheta%29%7D%7B%5Cpartial%20%5Ctheta_0%7D%20%3D%20%5Cfrac%7B1%7D%7Bm%7D%20%5Csum_%7Bi%3D1%7D%5Em%20%5Cleft%28%20h_%5Ctheta%20%5Cleft%28x%5E%7B%28i%29%7D%5Cright%29%20-%20y%5E%7B%28i%29%7D%20%5Cright%29%20x_j%5E%7B%28i%29%7D%20%5Cqquad%20%5Ctext%7Bfor%20%7D%20j%20%3D0%20%24%24%0A%0A%24%24%20%5Cfrac%7B%5Cpartial%20J%28%5Ctheta%29%7D%7B%5Cpartial%20%5Ctheta_j%7D%20%3D%20%5Cleft%28%20%5Cfrac%7B1%7D%7Bm%7D%20%5Csum_%7Bi%3D1%7D%5Em%20%5Cleft%28%20h_%5Ctheta%20%5Cleft%28x%5E%7B%28i%29%7D%5Cright%29%20-%20y%5E%7B%28i%29%7D%20%5Cright%29%20x_j%5E%7B%28i%29%7D%20%5Cright%29%20+%20%5Cfrac%7B%5Clambda%7D%7Bm%7D%5Ctheta_j%20%5Cqquad%20%5Ctext%7Bfor%20%7D%20j%20%5Cge%201%20%24%24%5Cnocache)  
 ## a) Prep
-```
+```python
 # Write a function to return cost and gradient (the two inputs of particular advanced optiminzation method)
 def costFunctionReg(theta, X, y, lambda_):
     """
@@ -172,7 +172,7 @@ def costFunctionReg(theta, X, y, lambda_):
 >rather than using special matrix can also just copy theta column vector and set 0,0 index to 0
 
  ## b) Optimization
- ```
+ ```python
  from scipy import optimize
 
 options = {'maxiter' : n}   # <- set max # iterations (int) performed by optimization
@@ -192,7 +192,7 @@ theta = res.x    # <- access array of optimized theta values
 
 
 # Logistic Reg One-class classification Predictions
-```
+```python
 z = np.dot(X, theta)     # <- X is array_like w/ shape (m, n+1)
 yhat = sigmoid(z)
 
