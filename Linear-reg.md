@@ -1,10 +1,10 @@
 # Convert df to array
-```
+```python
     import pandas as pd
     data_array = pd.DataFrame.to_numpy(data)    # <- where data is pandas DataFrame
 ```
 After assigning X and y ensure that both are of type 'float'
-```
+```python
     X = X.astype('float')
     y = y.astype('float)
 ```
@@ -12,7 +12,7 @@ After assigning X and y ensure that both are of type 'float'
 
 # Mean Squared Error Cost Function
 ![](http://chart.apis.google.com/chart?cht=tx&chl=J(\theta)=\frac{1}{2m}\sum_{i=1}^m\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^2)
-```
+```python
 def computeCost(X, y, theta):
     """
     Vectorized code to compute cost for linear regression
@@ -51,7 +51,7 @@ def computeCost(X, y, theta):
 _repeat to convergence {_  
 ![](http://chart.apis.google.com/chart?cht=tx&chl=\theta_j:=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)x_j^{(i)}\qquad\qquad) simultaneously update ![](http://chart.apis.google.com/chart?cht=tx&chl=\theta_j) for all j  
 _}_  
-```
+```python
 def gradientDescent(X, y, theta):
     """
     Vectorized code to perform gradient descent to best theta values.
@@ -103,7 +103,7 @@ def gradientDescent(X, y, theta):
     return theta, J_history
 ```
 * ## selecting alpha   
-```
+```python
 alpha = [.001, .003, .01, .03, .1, .3]
 
 n = X.shape[1]    # number features 
@@ -122,11 +122,11 @@ for num in alpha:
 
 * ## feature normalization example (mean normalization)  
 **After** performing feature normalization, reassign x_0 values (vector of 1's) and normalized values to X:
-```
+```python
     m = X.shape[0]
     X = np.concatenate(np.ones(m), X_norm, axis=1)
 ```
-```
+```python
 def featureNormalize(X):
     """
     Vectorized code performs mean normalization, (x-mu)/s, on the features in X. Returns a normalized version of X where
@@ -168,7 +168,7 @@ def featureNormalize(X):
 # Normal Equation 
 _Analytically solve for best theta values for linear reg_  
 ![](http://chart.apis.google.com/chart?cht=tx&chl=\theta=\left(X^TX\right)^{-1}X^Ty)  
-```
+```python
 def normalEqn(X, y):
     """
     Vectorized code computes the closed-form solution to linear regression using the normal equations.
@@ -196,7 +196,7 @@ def normalEqn(X, y):
 <br>
 
 # Plotting h(x) regression line
-```
+```python
 # plot data points
 plt.plot(x, y)
 
@@ -212,13 +212,13 @@ pyplot.show()
 Recall ![](http://mathurl.com/render.cgi?h_%5Ctheta%28x%29%3D%5Ctheta_0x_0+%5Ctheta_1x_1+...+%5Ctheta_nx_n%5Cnocache) 
  
 * ## without normalization 
-```
+```python
 Input = [1, x_1, x_2, ...]      # <- where 1, x_1, ... are input values for feature0, feature1, ... 
 
 y_hat = np.dot(Input, theta)    # <- where theta is vector [theta_0, theta_1, theta_2, ...]
 ```  
 * ## with normalization example (mean normalization)
-```
+```python
 prenormInput = [x_1, x_2, ...]
 postnormInput = np.divide((prenormInput - mu), sigma)   # <- where mu and sigma are vectors returned by featureNormalize()
 
