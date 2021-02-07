@@ -1,7 +1,7 @@
 # Regularized Logistic Reg Multi-class Classification Predictions
 
 ## a) Optimize parameters
-```
+```python
 def oneVsAll(X, y, num_labels, lambda_):
     """
     Trains logistic regression classifier for each class 
@@ -54,7 +54,7 @@ def oneVsAll(X, y, num_labels, lambda_):
     return all_theta
 ```
 ## b) Make predictions
-```
+```python
 def predictOneVsAll(X, all_theta):
     """
     Return a vector of predictions for each example in the matrix X.
@@ -97,7 +97,7 @@ def predictOneVsAll(X, all_theta):
 ![](http://mathurl.com/render.cgi?%5Ctext%7Bfor%20each%20node%20k%7D%20%5Cquad%20z_k%5E%7B%28j%29%7D%20%3D%20%5CTheta_%7B0%2Ck%7D%5E%7B%28j-1%29%7D%20%5Ccdot%20a_0%5E%7B%28j-1%29%7D%20+%20%20%5CTheta_%7B1%2Ck%7D%5E%7B%28j-1%29%7D%20%5Ccdot%20a_1%5E%7B%28j-1%29%7D%20+%20...%20+%20%5CTheta_%7Bn%2Ck%7D%5E%7B%28j-1%29%7D%20%5Ccdot%20a_n%5E%7B%28j-1%29%7D%5Cnocache)  
 ![](http://mathurl.com/render.cgi?a%5E%7B%28j-1%29%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20x_0%20%5C%5C%20%5Cvdots%20%5C%5C%20x_n%20%5Cend%7Bbmatrix%7D%5Cnocache)  
 ![](http://mathurl.com/render.cgi?%24z%5E%7B%28j%29%7D%20%3D%20%5CTheta%5E%7B%28j-1%29%7D%20%5Ccdot%20a%5E%7B%28j-1%29%7D%20%5Cqquad%20a%5E%7B%28j%29%7D%20%3D%20g%28z%5E%7B%28j%29%7D%29%24%20%0A%0A%24z%5E%7B%28j+1%29%7D%20%3D%20%5CTheta%5E%7B%28j%29%7D%20%5Ccdot%20a%5E%7B%28j%29%7D%20%5Cqquad%20h_%7B%5CTheta%7D%28x%29%20%3D%20a%5E%7B%28j+1%29%7D%20%3D%20g%28z%5E%7B%28j+1%29%7D%29%24%5Cnocache)  
-```
+```python
 def predict(X, Theta1, Theta2):
     """
     Predicts the label of an input given a trained neural network. 
