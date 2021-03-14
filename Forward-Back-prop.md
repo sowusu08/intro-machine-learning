@@ -286,5 +286,3 @@ def gradientCheck(params, costFunction, args=(), epsilon=1e-4):
 > segment of the output if params.size() > 20
 <br>
 
-# Predict
-
